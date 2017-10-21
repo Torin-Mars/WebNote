@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <listener>
+        <listener-class>com.mtl.listener.contextListener</listener-class>
+    </listener>
+
+
+    <!-- Web项目中配置proxool，并自动加载 -->
+    <servlet>
+        <servlet-name>ServletConfigurator</servlet-name>
+        <servlet-class>
+            org.logicalcobwebs.proxool.configuration.ServletConfigurator
+        </servlet-class>
+        <init-param>
+            <param-name>propertyFile</param-name>
+            <param-value>WEB-INF/classes/proxool.properties</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet>
+        <servlet-name>AdminServlet</servlet-name>
+        <servlet-class>com.mtl.control.AdminServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminServlet</servlet-name>
+        <url-pattern>/servlet/adminServlet</url-pattern>
+    </servlet-mapping>
+
+</web-app>
